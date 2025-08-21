@@ -1,5 +1,5 @@
 function generatePDF() {
-    fetch("https://your-backend.onrender.com/generate-pdf", {
+    fetch("https://backend-portfolio-mclb.onrender.com/generate-pdf", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: "Hello from frontend!" })
