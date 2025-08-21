@@ -14,4 +14,3 @@ function generatePDF() {
     })
     .catch(err => console.error("Error:", err));
   }
-  
