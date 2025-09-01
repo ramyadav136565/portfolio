@@ -43,23 +43,28 @@
 
     // Call chatbot API
     try {
-      const response = await fetch('https://backend-portfolio-mclb.onrender.com/chat_bot_api', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage })
-      });
-      const data = await response.json();
+        const response = await fetch('https://backend-portfolio-mclb.onrender.com/chat_bot_api', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ message: userMessage })
+});
+const data = await response.json();
 
-      // Hide spinner
-      chatbotSpinner.style.display = 'none';
+// Hide spinner
+chatbotSpinner.style.display = 'none';
 
-      // Display chatbot response
-      const parsedMarkdown = marked.parse(data.response);
+// Display chatbot response
+const parsedMarkdown = marked.parse(data.response);
 
-      const botMessageElement = document.createElement('div');
-      botMessageElement.innerHTML = `Ramy: ${parsedMarkdown}`;
-      chatbotMessages.appendChild(botMessageElement);
-    } catch (error) {
+// Create bot message element
+const botMessageElement = document.createElement('div');
+botMessageElement.classList.add('chatbot-message');
+botMessageElement.innerHTML = `<strong>Ramy:</strong> ${parsedMarkdown}`;
+chatbotMessages.appendChild(botMessageElement);
+
+// Auto scroll to bottom
+chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      } catch (error) {
       // Hide spinner
       chatbotSpinner.style.display = 'none';
 
