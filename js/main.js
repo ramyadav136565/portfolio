@@ -54,8 +54,10 @@
       chatbotSpinner.style.display = 'none';
 
       // Display chatbot response
+      const parsedMarkdown = marked.parse(data.response);
+
       const botMessageElement = document.createElement('div');
-      botMessageElement.textContent = `Ramy: ${data.response}`;
+      botMessageElement.innerHTML = `Ramy: ${parsedMarkdown}`;
       chatbotMessages.appendChild(botMessageElement);
     } catch (error) {
       // Hide spinner
